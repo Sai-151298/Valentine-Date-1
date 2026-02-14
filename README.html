@@ -1,0 +1,202 @@
+# Valentine-Date-1
+Date
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Priti 💖</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:100vh;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(-45deg,#ff758c,#ff7eb3,#ffb199,#ff0844);
+    background-size:400% 400%;
+    animation: gradient 8s ease infinite;
+    font-family: 'Poppins', sans-serif;
+}
+
+@keyframes gradient{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+.container{
+    text-align:center;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(20px);
+    padding:50px;
+    border-radius:25px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.3);
+    color:white;
+    width:90%;
+    max-width:480px;
+    position:relative;
+}
+
+h1{
+    font-family:'Playfair Display', serif;
+    font-size:32px;
+    margin-bottom:15px;
+}
+
+.name{
+    font-size:36px;
+    font-weight:bold;
+    color:white;
+    text-shadow:0 0 15px #fff, 0 0 25px #ff4b7d;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{ text-shadow:0 0 10px #fff, 0 0 20px #ff4b7d; }
+    to{ text-shadow:0 0 20px #fff, 0 0 40px #ff4b7d; }
+}
+
+p{
+    font-size:16px;
+    margin:20px 0 30px 0;
+}
+
+button{
+    padding:12px 28px;
+    margin:10px;
+    border:none;
+    border-radius:30px;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.yes{
+    background:white;
+    color:#ff4b7d;
+    font-weight:600;
+}
+
+.no{
+    background:transparent;
+    border:2px solid white;
+    color:white;
+    position:relative;
+}
+
+button:hover{
+    transform:scale(1.1);
+}
+
+.message{
+    margin-top:20px;
+    font-size:20px;
+    font-weight:500;
+}
+
+/* Floating hearts */
+.heart{
+    position:absolute;
+    bottom:-20px;
+    color:white;
+    font-size:20px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+    0%{transform:translateY(0) scale(1); opacity:1;}
+    100%{transform:translateY(-800px) scale(1.5); opacity:0;}
+}
+
+/* Fireworks */
+.firework{
+    position:absolute;
+    width:5px;
+    height:5px;
+    background:white;
+    border-radius:50%;
+    animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode{
+    to{
+        transform:translate(var(--x), var(--y));
+        opacity:0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>My Dearest</h1>
+    <div class="name">Priti 💖</div>
+    <p>
+        From the moment you came into my life,  
+        everything feels brighter and more beautiful.  
+        So today, I just want to ask you something special...
+    </p>
+
+    <button class="yes" onclick="yesClick()">Yes 💕</button>
+    <button class="no" id="noBtn" onmouseover="moveButton()">No 🥺</button>
+
+    <div class="message" id="message"></div>
+</div>
+
+<script>
+function yesClick(){
+    document.getElementById("message").innerHTML =
+    "You just made me the happiest person alive, Priti 💖✨ I can't wait for our special memories together 🌹";
+
+    // Fireworks
+    for(let i=0;i<50;i++){
+        let firework = document.createElement("div");
+        firework.classList.add("firework");
+
+        firework.style.left = "50%";
+        firework.style.top = "50%";
+
+        firework.style.setProperty('--x', (Math.random()*400-200)+"px");
+        firework.style.setProperty('--y', (Math.random()*400-200)+"px");
+
+        document.body.appendChild(firework);
+
+        setTimeout(()=>{ firework.remove(); },1000);
+    }
+}
+
+function moveButton(){
+    let button = document.getElementById("noBtn");
+    let x = Math.random() * 200 - 100;
+    let y = Math.random() * 200 - 100;
+    button.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+// Floating hearts
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}, 500);
+</script>
+
+</body>
+</html>
